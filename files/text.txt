@@ -1,0 +1,12 @@
+
+R1
+
+enable
+clear bgp ipv6 unicast *
+configure terminal
+
+R2
+
+enable
+clear bgp ipv6 unicast *
+configure terminal

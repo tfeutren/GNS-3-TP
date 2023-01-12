@@ -1,0 +1,53 @@
+Jan 04 13:15:02.213 HYPERVISOR: Release 0.2.21-amd64/Linux (tag 2019071212)
+Jan 04 13:15:02.216 HYPERVISOR: Started on IP = localhost, TCP port = 59039.
+Jan 04 13:15:02.217 HYPERVISOR: exec_cmd: hypervisor version 
+Jan 04 13:15:02.219 HYPERVISOR: exec_cmd: hypervisor working_dir /home/tfeutren/Bureau/Home_INSA/Documents/TP_GNS3/project-files/dynamips 
+Jan 04 13:15:02.222 GENERAL: working_dir=/home/tfeutren/Bureau/Home_INSA/Documents/TP_GNS3/project-files/dynamips
+Jan 04 13:15:02.223 HYPERVISOR: exec_cmd: hypervisor working_dir /home/tfeutren/Bureau/Home_INSA/Documents/TP_GNS3/project-files/dynamips/dc66fc49-b219-43c3-8551-e99a168a60e5 
+Jan 04 13:15:02.226 GENERAL: working_dir=/home/tfeutren/Bureau/Home_INSA/Documents/TP_GNS3/project-files/dynamips/dc66fc49-b219-43c3-8551-e99a168a60e5
+Jan 04 13:15:02.227 HYPERVISOR: exec_cmd: vm create R4 4 c7200 
+Jan 04 13:15:02.268 VM: VM R4 created.
+Jan 04 13:15:02.270 HYPERVISOR: exec_cmd: vm set_con_tcp_port R4 5003 
+Jan 04 13:15:02.271 HYPERVISOR: exec_cmd: c7200 get_mac_addr R4 
+Jan 04 13:15:02.273 HYPERVISOR: exec_cmd: vm get_status R4 
+Jan 04 13:15:02.275 HYPERVISOR: exec_cmd: vm slot_add_binding R4 0 0 C7200-IO-FE 
+Jan 04 13:15:02.278 HYPERVISOR: exec_cmd: vm set_ios R4 /home/tfeutren/GNS3/images/IOS/c7200-advipservicesk9-mz.152-4.S5.image 
+Jan 04 13:15:02.280 HYPERVISOR: exec_cmd: vm set_ram R4 512 
+Jan 04 13:15:02.282 HYPERVISOR: exec_cmd: vm set_nvram R4 512 
+Jan 04 13:15:02.284 HYPERVISOR: exec_cmd: vm set_disk0 R4 0 
+Jan 04 13:15:02.287 HYPERVISOR: exec_cmd: vm get_status R4 
+Jan 04 13:15:02.289 HYPERVISOR: exec_cmd: vm slot_add_binding R4 1 0 PA-GE 
+Jan 04 13:15:02.291 HYPERVISOR: exec_cmd: vm get_status R4 
+Jan 04 13:15:02.293 HYPERVISOR: exec_cmd: vm slot_add_binding R4 2 0 PA-GE 
+Jan 04 13:15:02.295 HYPERVISOR: exec_cmd: vm get_status R4 
+Jan 04 13:15:02.296 HYPERVISOR: exec_cmd: vm slot_add_binding R4 3 0 PA-GE 
+Jan 04 13:15:02.380 HYPERVISOR: exec_cmd: vm set_ios R4 /home/tfeutren/GNS3/images/IOS/c7200-advipservicesk9-mz.152-4.S5.image 
+Jan 04 13:15:33.108 HYPERVISOR: exec_cmd: vm set_ios R4 /home/tfeutren/GNS3/images/IOS/c7200-advipservicesk9-mz.152-4.S5.image 
+Jan 04 13:15:37.191 HYPERVISOR: exec_cmd: vm set_ios R4 /home/tfeutren/GNS3/images/IOS/c7200-advipservicesk9-mz.152-4.S5.image 
+Jan 04 13:15:44.622 HYPERVISOR: exec_cmd: vm set_ios R4 /home/tfeutren/GNS3/images/IOS/c7200-advipservicesk9-mz.152-4.S5.image 
+Jan 04 13:15:48.162 HYPERVISOR: exec_cmd: vm set_ios R4 /home/tfeutren/GNS3/images/IOS/c7200-advipservicesk9-mz.152-4.S5.image 
+Jan 04 13:17:02.029 HYPERVISOR: exec_cmd: nio create_udp udp-d96cb5b4-5104-47cb-b33a-f9f6f40fbe0d 10016 127.0.0.1 10017 
+Jan 04 13:17:02.305 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R4 2 0 udp-d96cb5b4-5104-47cb-b33a-f9f6f40fbe0d 
+Jan 04 13:17:02.309 HYPERVISOR: exec_cmd: vm get_status R4 
+Jan 04 13:17:32.236 HYPERVISOR: exec_cmd: nio create_udp udp-c7a8a748-9992-487f-8e2c-068a078705e0 10038 127.0.0.1 10039 
+Jan 04 13:17:32.242 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R4 1 0 udp-c7a8a748-9992-487f-8e2c-068a078705e0 
+Jan 04 13:17:32.244 HYPERVISOR: exec_cmd: vm get_status R4 
+Jan 04 13:17:40.862 HYPERVISOR: exec_cmd: nio create_udp udp-073a2060-eb53-49d1-8d2a-4495e2722b90 10046 127.0.0.1 10047 
+Jan 04 13:17:40.900 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R4 3 0 udp-073a2060-eb53-49d1-8d2a-4495e2722b90 
+Jan 04 13:17:40.920 HYPERVISOR: exec_cmd: vm get_status R4 
+Jan 04 13:18:33.933 HYPERVISOR: exec_cmd: vm get_status R4 
+Jan 04 13:18:33.943 HYPERVISOR: exec_cmd: vm slot_remove_nio_binding R4 1 0 
+Jan 04 13:18:33.960 HYPERVISOR: exec_cmd: nio delete udp-c7a8a748-9992-487f-8e2c-068a078705e0 
+Jan 04 13:18:34.326 HYPERVISOR: exec_cmd: vm get_status R4 
+Jan 04 13:18:34.340 HYPERVISOR: exec_cmd: vm slot_remove_nio_binding R4 2 0 
+Jan 04 13:18:34.344 HYPERVISOR: exec_cmd: nio delete udp-d96cb5b4-5104-47cb-b33a-f9f6f40fbe0d 
+Jan 04 13:18:35.287 HYPERVISOR: exec_cmd: vm get_status R4 
+Jan 04 13:18:35.339 HYPERVISOR: exec_cmd: vm slot_remove_nio_binding R4 3 0 
+Jan 04 13:18:35.340 HYPERVISOR: exec_cmd: nio delete udp-073a2060-eb53-49d1-8d2a-4495e2722b90 
+Jan 04 13:18:35.961 HYPERVISOR: exec_cmd: vm get_status R4 
+Jan 04 13:18:35.982 HYPERVISOR: exec_cmd: vm extract_config R4 
+Jan 04 13:18:36.097 HYPERVISOR: exec_cmd: vm delete R4 
+Jan 04 13:18:36.101 VM: VM R4 destroyed.
+Jan 04 13:18:36.177 HYPERVISOR: exec_cmd: hypervisor stop 
+Jan 04 13:18:36.452 HYPERVISOR: Stopped.
+Jan 04 13:18:36.452 GENERAL: reset done.

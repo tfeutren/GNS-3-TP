@@ -1,0 +1,50 @@
+Jan 04 13:15:06.797 HYPERVISOR: Release 0.2.21-amd64/Linux (tag 2019071212)
+Jan 04 13:15:06.800 HYPERVISOR: Started on IP = localhost, TCP port = 47751.
+Jan 04 13:15:06.801 HYPERVISOR: exec_cmd: hypervisor version 
+Jan 04 13:15:06.803 HYPERVISOR: exec_cmd: hypervisor working_dir /home/tfeutren/Bureau/Home_INSA/Documents/TP_GNS3/project-files/dynamips 
+Jan 04 13:15:06.805 GENERAL: working_dir=/home/tfeutren/Bureau/Home_INSA/Documents/TP_GNS3/project-files/dynamips
+Jan 04 13:15:06.807 HYPERVISOR: exec_cmd: hypervisor working_dir /home/tfeutren/Bureau/Home_INSA/Documents/TP_GNS3/project-files/dynamips/9ab87160-e344-4c3d-8a6b-3f759b666e11 
+Jan 04 13:15:06.809 GENERAL: working_dir=/home/tfeutren/Bureau/Home_INSA/Documents/TP_GNS3/project-files/dynamips/9ab87160-e344-4c3d-8a6b-3f759b666e11
+Jan 04 13:15:06.810 HYPERVISOR: exec_cmd: vm create R5 5 c7200 
+Jan 04 13:15:06.822 VM: VM R5 created.
+Jan 04 13:15:06.824 HYPERVISOR: exec_cmd: vm set_con_tcp_port R5 5004 
+Jan 04 13:15:06.825 HYPERVISOR: exec_cmd: c7200 get_mac_addr R5 
+Jan 04 13:15:06.827 HYPERVISOR: exec_cmd: vm get_status R5 
+Jan 04 13:15:06.828 HYPERVISOR: exec_cmd: vm slot_add_binding R5 0 0 C7200-IO-FE 
+Jan 04 13:15:06.832 HYPERVISOR: exec_cmd: vm set_ios R5 /home/tfeutren/GNS3/images/IOS/c7200-advipservicesk9-mz.152-4.S5.image 
+Jan 04 13:15:06.833 HYPERVISOR: exec_cmd: vm set_ram R5 512 
+Jan 04 13:15:06.835 HYPERVISOR: exec_cmd: vm set_nvram R5 512 
+Jan 04 13:15:06.837 HYPERVISOR: exec_cmd: vm set_disk0 R5 0 
+Jan 04 13:15:06.839 HYPERVISOR: exec_cmd: vm get_status R5 
+Jan 04 13:15:06.840 HYPERVISOR: exec_cmd: vm slot_add_binding R5 1 0 PA-GE 
+Jan 04 13:15:06.842 HYPERVISOR: exec_cmd: vm get_status R5 
+Jan 04 13:15:06.843 HYPERVISOR: exec_cmd: vm slot_add_binding R5 2 0 PA-GE 
+Jan 04 13:15:06.845 HYPERVISOR: exec_cmd: vm get_status R5 
+Jan 04 13:15:06.846 HYPERVISOR: exec_cmd: vm slot_add_binding R5 3 0 PA-GE 
+Jan 04 13:15:06.927 HYPERVISOR: exec_cmd: vm set_ios R5 /home/tfeutren/GNS3/images/IOS/c7200-advipservicesk9-mz.152-4.S5.image 
+Jan 04 13:15:29.613 HYPERVISOR: exec_cmd: vm set_ios R5 /home/tfeutren/GNS3/images/IOS/c7200-advipservicesk9-mz.152-4.S5.image 
+Jan 04 13:17:08.396 HYPERVISOR: exec_cmd: nio create_udp udp-905b969b-48c4-426d-a325-85798ae1a502 10022 127.0.0.1 10023 
+Jan 04 13:17:08.635 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R5 1 0 udp-905b969b-48c4-426d-a325-85798ae1a502 
+Jan 04 13:17:08.638 HYPERVISOR: exec_cmd: vm get_status R5 
+Jan 04 13:17:27.219 HYPERVISOR: exec_cmd: nio create_udp udp-73a7512e-093d-4258-a567-8d2c14896df6 10032 127.0.0.1 10033 
+Jan 04 13:17:27.223 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R5 2 0 udp-73a7512e-093d-4258-a567-8d2c14896df6 
+Jan 04 13:17:27.225 HYPERVISOR: exec_cmd: vm get_status R5 
+Jan 04 13:17:40.774 HYPERVISOR: exec_cmd: nio create_udp udp-6a62b392-e8a0-4f9c-87db-2febf0a6a658 10044 127.0.0.1 10045 
+Jan 04 13:17:40.807 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R5 3 0 udp-6a62b392-e8a0-4f9c-87db-2febf0a6a658 
+Jan 04 13:17:40.827 HYPERVISOR: exec_cmd: vm get_status R5 
+Jan 04 13:18:34.591 HYPERVISOR: exec_cmd: vm get_status R5 
+Jan 04 13:18:34.866 HYPERVISOR: exec_cmd: vm slot_remove_nio_binding R5 3 0 
+Jan 04 13:18:35.193 HYPERVISOR: exec_cmd: nio delete udp-6a62b392-e8a0-4f9c-87db-2febf0a6a658 
+Jan 04 13:18:36.279 HYPERVISOR: exec_cmd: vm get_status R5 
+Jan 04 13:18:36.281 HYPERVISOR: exec_cmd: vm slot_remove_nio_binding R5 1 0 
+Jan 04 13:18:36.283 HYPERVISOR: exec_cmd: nio delete udp-905b969b-48c4-426d-a325-85798ae1a502 
+Jan 04 13:18:36.330 HYPERVISOR: exec_cmd: vm get_status R5 
+Jan 04 13:18:36.340 HYPERVISOR: exec_cmd: vm slot_remove_nio_binding R5 2 0 
+Jan 04 13:18:36.342 HYPERVISOR: exec_cmd: nio delete udp-73a7512e-093d-4258-a567-8d2c14896df6 
+Jan 04 13:18:37.172 HYPERVISOR: exec_cmd: vm get_status R5 
+Jan 04 13:18:37.187 HYPERVISOR: exec_cmd: vm extract_config R5 
+Jan 04 13:18:37.193 HYPERVISOR: exec_cmd: vm delete R5 
+Jan 04 13:18:37.196 VM: VM R5 destroyed.
+Jan 04 13:18:37.222 HYPERVISOR: exec_cmd: hypervisor stop 
+Jan 04 13:18:37.532 HYPERVISOR: Stopped.
+Jan 04 13:18:37.533 GENERAL: reset done.

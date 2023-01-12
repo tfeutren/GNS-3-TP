@@ -1,0 +1,33 @@
+Jan 04 13:15:14.594 HYPERVISOR: Release 0.2.21-amd64/Linux (tag 2019071212)
+Jan 04 13:15:14.596 HYPERVISOR: Started on IP = localhost, TCP port = 43317.
+Jan 04 13:15:14.604 HYPERVISOR: exec_cmd: hypervisor version 
+Jan 04 13:15:14.606 HYPERVISOR: exec_cmd: hypervisor working_dir /home/tfeutren/Bureau/Home_INSA/Documents/TP_GNS3/project-files/dynamips 
+Jan 04 13:15:14.607 GENERAL: working_dir=/home/tfeutren/Bureau/Home_INSA/Documents/TP_GNS3/project-files/dynamips
+Jan 04 13:15:14.608 HYPERVISOR: exec_cmd: hypervisor working_dir /home/tfeutren/Bureau/Home_INSA/Documents/TP_GNS3/project-files/dynamips/5c5ce5da-7c91-47ff-82bb-6c971d9f2909 
+Jan 04 13:15:14.611 GENERAL: working_dir=/home/tfeutren/Bureau/Home_INSA/Documents/TP_GNS3/project-files/dynamips/5c5ce5da-7c91-47ff-82bb-6c971d9f2909
+Jan 04 13:15:14.611 HYPERVISOR: exec_cmd: vm create R12 12 c7200 
+Jan 04 13:15:14.621 VM: VM R12 created.
+Jan 04 13:15:14.622 HYPERVISOR: exec_cmd: vm set_con_tcp_port R12 5011 
+Jan 04 13:15:14.623 HYPERVISOR: exec_cmd: c7200 get_mac_addr R12 
+Jan 04 13:15:14.625 HYPERVISOR: exec_cmd: vm get_status R12 
+Jan 04 13:15:14.626 HYPERVISOR: exec_cmd: vm slot_add_binding R12 0 0 C7200-IO-FE 
+Jan 04 13:15:14.628 HYPERVISOR: exec_cmd: vm set_ios R12 /home/tfeutren/GNS3/images/IOS/c7200-advipservicesk9-mz.152-4.S5.image 
+Jan 04 13:15:14.630 HYPERVISOR: exec_cmd: vm set_ram R12 512 
+Jan 04 13:15:14.632 HYPERVISOR: exec_cmd: vm set_nvram R12 512 
+Jan 04 13:15:14.633 HYPERVISOR: exec_cmd: vm set_disk0 R12 0 
+Jan 04 13:15:14.635 HYPERVISOR: exec_cmd: vm get_status R12 
+Jan 04 13:15:14.636 HYPERVISOR: exec_cmd: vm slot_add_binding R12 1 0 PA-GE 
+Jan 04 13:15:14.638 HYPERVISOR: exec_cmd: vm get_status R12 
+Jan 04 13:15:14.639 HYPERVISOR: exec_cmd: vm slot_add_binding R12 2 0 PA-GE 
+Jan 04 13:15:14.641 HYPERVISOR: exec_cmd: vm get_status R12 
+Jan 04 13:15:14.642 HYPERVISOR: exec_cmd: vm slot_add_binding R12 3 0 PA-GE 
+Jan 04 13:15:14.757 HYPERVISOR: exec_cmd: vm set_ios R12 /home/tfeutren/GNS3/images/IOS/c7200-advipservicesk9-mz.152-4.S5.image 
+Jan 04 13:15:31.042 HYPERVISOR: exec_cmd: vm set_ios R12 /home/tfeutren/GNS3/images/IOS/c7200-advipservicesk9-mz.152-4.S5.image 
+Jan 04 13:16:07.005 HYPERVISOR: exec_cmd: vm set_ios R12 /home/tfeutren/GNS3/images/IOS/c7200-advipservicesk9-mz.152-4.S5.image 
+Jan 04 13:18:35.413 HYPERVISOR: exec_cmd: vm get_status R12 
+Jan 04 13:18:35.451 HYPERVISOR: exec_cmd: vm extract_config R12 
+Jan 04 13:18:35.455 HYPERVISOR: exec_cmd: vm delete R12 
+Jan 04 13:18:35.459 VM: VM R12 destroyed.
+Jan 04 13:18:35.476 HYPERVISOR: exec_cmd: hypervisor stop 
+Jan 04 13:18:35.824 HYPERVISOR: Stopped.
+Jan 04 13:18:35.833 GENERAL: reset done.

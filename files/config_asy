@@ -1,0 +1,395 @@
+R8
+
+enable
+    clear bgp ipv6 unicast *
+    configure terminal
+        ipv6 unicast-routing
+        ipv6 route 2020:0:2::/48 Null0
+        ipv6 router ospf 1
+            router-id 8.8.8.8
+            redistribute connected
+            exit
+        router bgp 2
+            no bgp default ipv4-unicast
+            bgp router-id 8.8.8.8
+            neighbor 2020:0:100::6 remote-as 1
+            neighbor 2::9 remote-as 2
+            neighbor 2::9 update-source loopback 0
+            neighbor 2::10 remote-as 2
+            neighbor 2::10 update-source loopback 0
+            neighbor 2::11 remote-as 2
+            neighbor 2::11 update-source loopback 0
+            neighbor 2::12 remote-as 2
+            neighbor 2::12 update-source loopback 0
+            neighbor 2::13 remote-as 2
+            neighbor 2::13 update-source loopback 0
+            neighbor 2::14 remote-as 2
+            neighbor 2::14 update-source loopback 0
+
+            address-family ipv6 unicast
+                neighbor 2020:0:100::6 activate
+                neighbor 2::9 activate
+                neighbor 2::10 activate
+                neighbor 2::11 activate
+                neighbor 2::12 activate
+                neighbor 2::13 activate
+                neighbor 2::14 activate
+                network 2020:0:2::/48
+
+                exit
+        exit
+        interface GigabitEthernet1/0
+            no shutdown
+            ipv6 enable
+            ipv6 address 2020:0:2:810::8/64
+            ipv6 ospf 1 area 1
+            exit
+        interface GigabitEthernet2/0
+            no shutdown
+            ipv6 enable
+            ipv6 address 2020:0:100::8/64
+            exit
+        interface GigabitEthernet4/0
+            no shutdown
+            ipv6 enable
+            ipv6 address 2020:0:2:811::8/64
+            ipv6 ospf 1 area 1
+            exit
+        interface loopback 0
+            no shutdown
+            ipv6 enable
+            ipv6 address 2::8/128
+            ipv6 ospf 1 area 1
+            exit
+end
+
+R9
+
+enable
+    clear bgp ipv6 unicast *
+    configure terminal
+        ipv6 unicast-routing
+        ipv6 route 2020:0:2::/48 Null0
+        ipv6 router ospf 1
+            router-id 9.9.9.9
+            redistribute connected
+            exit
+        router bgp 2
+            no bgp default ipv4-unicast
+            bgp router-id 9.9.9.9
+            neighbor 2020:0:200::7 remote-as 1
+            neighbor 2::8 remote-as 2
+            neighbor 2::8 update-source loopback 0 
+            neighbor 2::10 remote-as 2
+            neighbor 2::10 update-source loopback 0
+            neighbor 2::11 remote-as 2
+            neighbor 2::11 update-source loopback 0
+            neighbor 2::12 remote-as 2
+            neighbor 2::12 update-source loopback 0
+            neighbor 2::13 remote-as 2
+            neighbor 2::13 update-source loopback 0
+            neighbor 2::14 remote-as 2
+            neighbor 2::14 update-source loopback 0
+            address-family ipv6 unicast
+                neighbor 2020:0:200::7 activate
+                neighbor 2::8 activate
+                neighbor 2::10 activate
+                neighbor 2::11 activate
+                neighbor 2::12 activate
+                neighbor 2::13 activate
+                neighbor 2::14 activate
+                network 2020:0:2::/48
+            exit
+        exit
+        interface GigabitEthernet1/0
+            no shutdown
+            ipv6 enable
+            ipv6 address 2020:0:200::9/64
+            exit
+        interface GigabitEthernet2/0
+            no shutdown
+            ipv6 enable
+            ipv6 address 2020:0:2:911::9/64
+            ipv6 ospf 1 area 1
+            exit
+        interface GigabitEthernet4/0
+            no shutdown
+            ipv6 enable
+            ipv6 address 2020:0:2:910::9/64
+            ipv6 ospf 1 area 1
+            exit
+        interface loopback 0
+            no shutdown
+            ipv6 enable
+            ipv6 address 2::9/128
+            ipv6 ospf 1 area 1
+            exit
+end
+
+R10
+
+enable
+    clear bgp ipv6 unicast *
+    configure terminal
+        ipv6 unicast-routing
+        ipv6 router ospf 1
+            router-id 10.10.10.10
+            exit
+        router bgp 2
+            no bgp default ipv4-unicast
+            bgp router-id 10.10.10.10
+            neighbor 2::8 remote-as 2
+            neighbor 2::8 update-source loopback 0
+            neighbor 2::9 remote-as 2
+            neighbor 2::9 update-source loopback 0
+            address-family ipv6 unicast
+                neighbor 2::8 activate 
+                neighbor 2::9 activate 
+                exit
+            exit
+        interface GigabitEthernet1/0
+            no shutdown
+            ipv6 enable
+            ipv6 address 2020:0:2:810::10/64
+            ipv6 ospf 1 area 1
+            exit
+        interface GigabitEthernet2/0
+            no shutdown
+            ipv6 enable
+            ipv6 address 2020:0:2:1012::10/64
+            ipv6 ospf 1 area 1
+            exit
+        interface GigabitEthernet3/0
+            no shutdown
+            ipv6 enable
+            ipv6 address 2020:0:2:1011::10/64
+            ipv6 ospf 1 area 1
+            exit
+        interface GigabitEthernet4/0
+            no shutdown
+            ipv6 enable
+            ipv6 address 2020:0:2:910::10/64
+            ipv6 ospf 1 area 1
+            exit
+        interface loopback 0
+            no shutdown
+            ipv6 enable
+            ipv6 address 2::10/128
+            ipv6 ospf 1 area 1
+            exit
+end
+
+R11
+
+enable
+    clear bgp ipv6 unicast *
+    configure terminal
+        ipv6 unicast-routing
+        ipv6 router ospf 1
+            router-id 11.11.11.11
+            exit
+        router bgp 2
+            no bgp default ipv4-unicast
+            bgp router-id 11.11.11.11
+            neighbor 2::8 remote-as 2
+            neighbor 2::8 update-source loopback 0
+            neighbor 2::9 remote-as 2
+            neighbor 2::9 update-source loopback 0
+            address-family ipv6 unicast
+                neighbor 2::8 activate 
+                neighbor 2::9 activate 
+                exit
+            exit
+        interface GigabitEthernet1/0
+            no shutdown
+            ipv6 enable
+            ipv6 address 2020:0:2:1113::11/64
+            ipv6 ospf 1 area 1
+            exit
+        interface GigabitEthernet2/0
+            no shutdown
+            ipv6 enable
+            ipv6 address 2020:0:2:911::11/64
+            ipv6 ospf 1 area 1
+            exit
+        interface GigabitEthernet3/0
+            no shutdown
+            ipv6 enable
+            ipv6 address 2020:0:2:1011::11/64
+            ipv6 ospf 1 area 1
+            exit
+        interface GigabitEthernet4/0
+            no shutdown
+            ipv6 enable
+            ipv6 address 2020:0:2:811::11/64
+            ipv6 ospf 1 area 1
+            exit
+        interface loopback 0
+            no shutdown
+            ipv6 enable
+            ipv6 address 2::11/128
+            ipv6 ospf 1 area 1
+            exit
+end
+R12
+
+enable
+    clear bgp ipv6 unicast *
+    configure terminal
+        ipv6 unicast-routing
+        ipv6 router ospf 1
+            router-id 12.12.12.12
+            exit
+        router bgp 2
+            no bgp default ipv4-unicast
+            bgp router-id 12.12.12.12
+            neighbor 2::8 remote-as 2
+            neighbor 2::8 update-source loopback 0
+            neighbor 2::9 remote-as 2
+            neighbor 2::9 update-source loopback 0
+            address-family ipv6 unicast
+                neighbor 2::8 activate 
+                neighbor 2::9 activate 
+                exit
+            exit
+        interface GigabitEthernet1/0
+            no shutdown
+            ipv6 enable
+            ipv6 address 2020:0:2:1214::12/64
+            ipv6 ospf 1 area 1
+            exit
+        interface GigabitEthernet2/0
+            no shutdown
+            ipv6 enable
+            ipv6 address 2020:0:2:1012::12/64
+            ipv6 ospf 1 area 1
+            exit
+        interface GigabitEthernet3/0
+            no shutdown
+            ipv6 enable
+            ipv6 address 2020:0:2:1213::12/64
+            ipv6 ospf 1 area 1
+            exit
+        interface loopback 0
+            no shutdown
+            ipv6 enable
+            ipv6 address 2::12/128
+            ipv6 ospf 1 area 1
+            exit
+
+end
+
+R13
+
+enable
+    clear bgp ipv6 unicast *
+    configure terminal
+        ipv6 unicast-routing
+        ipv6 router ospf 1
+            router-id 13.13.13.13
+            exit
+        router bgp 2
+            no bgp default ipv4-unicast
+            bgp router-id 13.13.13.13
+            neighbor 2::8 remote-as 2
+            neighbor 2::8 update-source loopback 0
+            neighbor 2::9 remote-as 2
+            neighbor 2::9 update-source loopback 0
+            address-family ipv6 unicast
+                neighbor 2::8 activate 
+                neighbor 2::9 activate 
+                exit
+            exit
+        interface GigabitEthernet1/0
+            no shutdown
+            ipv6 enable
+            ipv6 address 2020:0:2:1113::13/64
+            ipv6 ospf 1 area 1
+            exit
+        interface GigabitEthernet2/0
+            no shutdown
+            ipv6 enable
+            ipv6 address 2020:0:2:1314::13/64
+            ipv6 ospf 1 area 1
+            exit
+        interface GigabitEthernet3/0
+            no shutdown
+            ipv6 enable
+            ipv6 address 2020:0:2:1213::13/64
+            ipv6 ospf 1 area 1
+            exit
+        interface loopback 0
+            no shutdown
+            ipv6 enable
+            ipv6 address 2::13/128
+            ipv6 ospf 1 area 1
+            exit
+end
+
+R14
+
+enable
+    clear bgp ipv6 unicast *
+    configure terminal
+        ipv6 unicast-routing
+        ipv6 router ospf 1
+            router-id 14.14.14.14
+            exit
+        router bgp 2
+            no bgp default ipv4-unicast
+            bgp router-id 14.14.14.14
+            neighbor 2::8 remote-as 2
+            neighbor 2::8 update-source loopback 0
+            neighbor 2::9 remote-as 2
+            neighbor 2::9 update-source loopback 0
+            address-family ipv6 unicast
+                neighbor 2::8 activate 
+                neighbor 2::9 activate 
+                exit
+            exit
+        interface GigabitEthernet1/0
+            no shutdown
+            ipv6 enable
+            ipv6 address 2020:0:2:1214::14/64
+            ipv6 ospf 1 area 1
+            exit
+        interface GigabitEthernet2/0
+            no shutdown
+            ipv6 enable
+            ipv6 address 2020:0:2:1314::14/64
+            ipv6 ospf 1 area 1
+            exit
+        interface loopback 0
+            no shutdown
+            ipv6 enable
+            ipv6 address 2::14/128
+            ipv6 ospf 1 area 1
+            exit
+end
+
+
+
+
+                network 2020:0:2:810::/64
+                network 2020:0:2:811::/64
+                network 2020:0:2:910::/64
+                network 2020:0:2:911::/64
+                network 2020:0:2:1011::/64
+                network 2020:0:2:1012::/64
+                network 2020:0:2:1113::/64
+                network 2020:0:2:1213::/64
+                network 2020:0:2:1214::/64
+                network 2020:0:2:1314::/64
+
+                network 2020:0:2:810::/64
+                network 2020:0:2:811::/64
+                network 2020:0:2:910::/64
+                network 2020:0:2:911::/64
+                network 2020:0:2:1011::/64
+                network 2020:0:2:1012::/64
+                network 2020:0:2:1113::/64
+                network 2020:0:2:1213::/64
+                network 2020:0:2:1214::/64
+                network 2020:0:2:1314::/64
+
+                telnet localhost 500
