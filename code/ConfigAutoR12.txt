@@ -1,0 +1,39 @@
+enable
+clear bgp ipv6 unicast *
+configure terminal
+ipv6 unicast-routing
+ipv6 router ospf 1
+router-id 12.12.12.12
+exit
+router bgp 2
+no bgp default ipv4-unicast
+ipv6 router-id 12.12.12.12
+à faire
+address-family ipv6 unicast
+à faire
+exit
+exit
+interface GigabiteEthernet1/0
+no shutdown
+ipv6 enable
+ipv6 adress 2020:0:2:1012::12
+ipv6 ospf 1 area 1
+exit
+interface GigabiteEthernet2/0
+no shutdown
+ipv6 enable
+ipv6 adress 2020:0:2:1213::12
+ipv6 ospf 1 area 1
+exit
+interface GigabiteEthernet3/0
+no shutdown
+ipv6 enable
+ipv6 adress 2020:0:2:1214::12
+ipv6 ospf 1 area 1
+exit
+interface loopback 0
+no shutdown
+ipv6 enable
+ipv6 address 2::12/128
+ipv6 ospf 1 area 1
+exit
