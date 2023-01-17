@@ -366,30 +366,3 @@ enable
             ipv6 ospf 1 area 1
             exit
 end
-
-
-
-
-                network 2020:0:2:810::/64
-                network 2020:0:2:811::/64
-                network 2020:0:2:910::/64
-                network 2020:0:2:911::/64
-                network 2020:0:2:1011::/64
-                network 2020:0:2:1012::/64
-                network 2020:0:2:1113::/64
-                network 2020:0:2:1213::/64
-                network 2020:0:2:1214::/64
-                network 2020:0:2:1314::/64
-
-                network 2020:0:2:810::/64
-                network 2020:0:2:811::/64
-                network 2020:0:2:910::/64
-                network 2020:0:2:911::/64
-                network 2020:0:2:1011::/64
-                network 2020:0:2:1012::/64
-                network 2020:0:2:1113::/64
-                network 2020:0:2:1213::/64
-                network 2020:0:2:1214::/64
-                network 2020:0:2:1314::/64
-
-                telnet localhost 500
