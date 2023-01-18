@@ -16,4 +16,5 @@ Configure AS with different Protocol
 * We can see our files gns3 about **network configuration**.
 
 ## Project-files :runner:
-* Just some files about operations from the gns3 file
+* Some files about operations from the gns3 file
+* in *dynamips* we have the different files, these files are modified by our python program
