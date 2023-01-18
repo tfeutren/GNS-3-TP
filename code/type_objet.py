@@ -12,10 +12,11 @@ class AS:
 
 class Routeur:
 
-    def __init__(self, ID, interfaces, neighbors, ASBR):
+    def __init__(self, ID, interfaces, neighbors, ASBR = False ,neighborsEbgp=[]):
         self.ID = ID
         self.interfaces = interfaces #liste interfaces
         self.neighbors= neighbors #liste neighbors
+        self.neighborsEbgp = neighborsEbgp
         self.ASBR = ASBR
         self.liste = []
 

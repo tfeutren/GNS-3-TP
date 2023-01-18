@@ -2,36 +2,53 @@ enable
 clear bgp ipv6 unicast *
 configure terminal
 ipv6 unicast-routing
-ipv6 route 2020:0:1::/48
+ipv6 route 2020:0:1::/48 Null0
 ipv6 router rip 1
 redistribute connected
 exit
 router bgp 1
 no bgp default ipv4-unicast
-ipv6 router-id 6.6.6.6
-à faire
+bgp router-id 6.6.6.6
+neighbor 1::1 remote-as 1
+neighbor 1::1 update-source loopback 0
+neighbor 1::2 remote-as 1
+neighbor 1::2 update-source loopback 0
+neighbor 1::3 remote-as 1
+neighbor 1::3 update-source loopback 0
+neighbor 1::4 remote-as 1
+neighbor 1::4 update-source loopback 0
+neighbor 1::5 remote-as 1
+neighbor 1::5 update-source loopback 0
+neighbor 1::7 remote-as 1
+neighbor 1::7 update-source loopback 0
+neighbor 2023:0:68::8 remote-as 2
 address-family ipv6 unicast
-à faire
+neighbor 1::1 activate
+neighbor 1::2 activate
+neighbor 1::3 activate
+neighbor 1::4 activate
+neighbor 1::5 activate
+neighbor 1::7 activate
+neighbor 2023:0:68::8 activate
 network 2020:0:1::/48
 exit
 exit
 interface GigabiteEthernet1/0
 no shutdown
 ipv6 enable
-ipv6 adress 2020:0:1:46::6
+ipv6 address 2020:0:1:46::6/64
 ipv6 rip 1 enable
 exit
 interface GigabiteEthernet2/0
 no shutdown
 ipv6 enable
-ipv6 adress 2020:0:1:56::6
+ipv6 address 2020:0:1:56::6/64
 ipv6 rip 1 enable
 exit
 interface GigabiteEthernet4/0
 no shutdown
 ipv6 enable
-ipv6 adress 2020:0:1:68::6
-ipv6 rip 1 enable
+ipv6 address 2023:0:68::6/64
 exit
 interface loopback 0
 no shutdown
@@ -39,3 +56,4 @@ ipv6 enable
 ipv6 address 1::6/128
 ipv6 rip 1 enable
 exit
+end

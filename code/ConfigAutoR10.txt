@@ -7,34 +7,38 @@ router-id 10.10.10.10
 exit
 router bgp 2
 no bgp default ipv4-unicast
-ipv6 router-id 10.10.10.10
-à faire
+bgp router-id 10.10.10.10
+neighbour 2::8 remote-as 2
+neighbour 2::8 update-source loopback 0
+neighbour 2::9 remote-as 2
+neighbour 2::9 update-source loopback 0
 address-family ipv6 unicast
-à faire
+neighbour 2::8 activate
+neighbour 2::9 activate
 exit
 exit
 interface GigabiteEthernet1/0
 no shutdown
 ipv6 enable
-ipv6 adress 2020:0:2:810::10
+ipv6 address 2020:0:2:810::10/64
 ipv6 ospf 1 area 1
 exit
 interface GigabiteEthernet2/0
 no shutdown
 ipv6 enable
-ipv6 adress 2020:0:2:910::10
+ipv6 address 2020:0:2:910::10/64
 ipv6 ospf 1 area 1
 exit
 interface GigabiteEthernet3/0
 no shutdown
 ipv6 enable
-ipv6 adress 2020:0:2:1011::10
+ipv6 address 2020:0:2:1011::10/64
 ipv6 ospf 1 area 1
 exit
 interface GigabiteEthernet4/0
 no shutdown
 ipv6 enable
-ipv6 adress 2020:0:2:1012::10
+ipv6 address 2020:0:2:1012::10/64
 ipv6 ospf 1 area 1
 exit
 interface loopback 0
@@ -43,3 +47,4 @@ ipv6 enable
 ipv6 address 2::10/128
 ipv6 ospf 1 area 1
 exit
+end
