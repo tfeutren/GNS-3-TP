@@ -45,7 +45,7 @@ ipv6 enable
 ipv6 address 2020:0:2:811::8/64
 ipv6 ospf 1 area 1
 exit
-interface GigabiteEthernet4/0
+interface GigabiteEthernet3/0
 no shutdown
 ipv6 enable
 ipv6 address 2023:0:68::8/64

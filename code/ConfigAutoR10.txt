@@ -8,13 +8,25 @@ exit
 router bgp 2
 no bgp default ipv4-unicast
 bgp router-id 10.10.10.10
-neighbour 2::8 remote-as 2
-neighbour 2::8 update-source loopback 0
-neighbour 2::9 remote-as 2
-neighbour 2::9 update-source loopback 0
+neighbor 2::8 remote-as 2
+neighbor 2::8 update-source loopback 0
+neighbor 2::9 remote-as 2
+neighbor 2::9 update-source loopback 0
+neighbor 2::11 remote-as 2
+neighbor 2::11 update-source loopback 0
+neighbor 2::12 remote-as 2
+neighbor 2::12 update-source loopback 0
+neighbor 2::13 remote-as 2
+neighbor 2::13 update-source loopback 0
+neighbor 2::14 remote-as 2
+neighbor 2::14 update-source loopback 0
 address-family ipv6 unicast
-neighbour 2::8 activate
-neighbour 2::9 activate
+neighbor 2::8 activate
+neighbor 2::9 activate
+neighbor 2::11 activate
+neighbor 2::12 activate
+neighbor 2::13 activate
+neighbor 2::14 activate
 exit
 exit
 interface GigabiteEthernet1/0
