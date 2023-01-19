@@ -3,6 +3,29 @@ clear bgp ipv6 unicast *
 configure terminal
 ipv6 unicast-routing
 ipv6 route 2020:0:2::/48 Null0
+interface GigabiteEthernet1/0
+no shutdown
+ipv6 enable
+ipv6 address 2020:0:2:13::8/64
+ipv6 ospf 1 area 1
+exit
+interface GigabiteEthernet2/0
+no shutdown
+ipv6 enable
+ipv6 address 2020:0:2:14::8/64
+ipv6 ospf 1 area 1
+exit
+interface GigabiteEthernet3/0
+no shutdown
+ipv6 enable
+ipv6 address 2023:0:11::8/64
+exit
+interface loopback 0
+no shutdown
+ipv6 enable
+ipv6 address 2::8/128
+ipv6 ospf 1 area 1
+exit
 ipv6 router ospf 1
 router-id 8.8.8.8
 exit
@@ -21,7 +44,7 @@ neighbor 2::13 remote-as 2
 neighbor 2::13 update-source loopback 0
 neighbor 2::14 remote-as 2
 neighbor 2::14 update-source loopback 0
-neighbor 2023:0:68::6 remote-as 1
+neighbor 2023:0:11::6 remote-as 1
 address-family ipv6 unicast
 neighbor 2::9 activate
 neighbor 2::10 activate
@@ -29,31 +52,8 @@ neighbor 2::11 activate
 neighbor 2::12 activate
 neighbor 2::13 activate
 neighbor 2::14 activate
-neighbor 2023:0:68::6 activate
+neighbor 2023:0:11::6 activate
 network 2020:0:2::/48
 exit
-exit
-interface GigabiteEthernet1/0
-no shutdown
-ipv6 enable
-ipv6 address 2020:0:2:810::8/64
-ipv6 ospf 1 area 1
-exit
-interface GigabiteEthernet2/0
-no shutdown
-ipv6 enable
-ipv6 address 2020:0:2:811::8/64
-ipv6 ospf 1 area 1
-exit
-interface GigabiteEthernet3/0
-no shutdown
-ipv6 enable
-ipv6 address 2023:0:68::8/64
-exit
-interface loopback 0
-no shutdown
-ipv6 enable
-ipv6 address 2::8/128
-ipv6 ospf 1 area 1
 exit
 end
