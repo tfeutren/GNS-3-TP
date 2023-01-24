@@ -276,7 +276,8 @@ enable
                 neighbor 1::7 activate
                 network 2020:0:1::/48
                 exit
-        exit
+            exit
+        
         interface GigabitEthernet1/0
             no shutdown
             ipv6 enable
@@ -364,3 +365,10 @@ enable
             ipv6 rip 1 enable
             exit
 end
+
+
+               neighbor 2020:0:100::8 route-map Peer in
+                       route-map Peer permit 1
+            match community Peer
+            set local-preference 500
+            exit

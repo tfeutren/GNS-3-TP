@@ -6,20 +6,9 @@
 
 import json
 from type_objet import AS, Routeur
+from readData import List_AS, List_Router
 
 # ----------------------------------
-
-#def descriptionJSON(Path):
-
-#création de la liste des As déclarées dans le fichier .json
-def creationListAs(*args):
-
-    listAs =[]
-
-    for elem in args:
-        listAs.append(elem)
-
-    return listAs
 
 #génération config des routeurs d'une AS
 def configRouteur(As,listeAs,idNewNetwork):
@@ -33,7 +22,6 @@ def configRouteur(As,listeAs,idNewNetwork):
                 routeur.ajoutListe("ipv6 route {} Null0".format(As.addReseau))
             
         idNewNetwork=idNewNetwork + configAddress(routeur,As,listeAs,idNewNetwork)
-        print(str(idNewNetwork)+" "+str(routeur.ID[1]))
         configProtocol(routeur,As.protocol)
         configProtocol(routeur,"bgp",As)
         
@@ -104,7 +92,7 @@ def configAddress(routeur,As,listeAs,idNewNetwork):
 
                 indexEbgpNeighbors+=1
             
-            routeur.ajoutListe("exit")
+            routeur.ajoutListe("!")
         
         routeur.ajoutListe("interface loopback 0")
         routeur.ajoutListe("no shutdown")
@@ -117,7 +105,7 @@ def configAddress(routeur,As,listeAs,idNewNetwork):
         elif As.protocol == "ospf":
             routeur.ajoutListe("ipv6 ospf 1 area 1")
 
-        routeur.ajoutListe("exit")
+        routeur.ajoutListe("!")
 
         return updateIndexNetwork
     
@@ -136,13 +124,13 @@ def configProtocol(routeur,protocol,As=None):
         if protocol == "rip":
             routeur.ajoutListe("ipv6 router rip 1")
             routeur.ajoutListe("redistribute connected")
-            routeur.ajoutListe("exit")
+            routeur.ajoutListe("!")
 
         #configuration protocol ospf
         elif protocol == "ospf":
             routeur.ajoutListe("ipv6 router ospf 1")
             routeur.ajoutListe("router-id {}.{}.{}.{}".format(str(routeur.ID[1]),str(routeur.ID[1]),str(routeur.ID[1]),str(routeur.ID[1])))
-            routeur.ajoutListe("exit")
+            routeur.ajoutListe("!")
         
         #configuration protocol bgp
         elif protocol == "bgp":
@@ -178,8 +166,8 @@ def configProtocol(routeur,protocol,As=None):
                 #déclaration réseaux 
                 routeur.ajoutListe("network {}".format(str(As.addReseau)))
                     
-            routeur.ajoutListe("exit")
-            routeur.ajoutListe("exit")
+            routeur.ajoutListe("!")
+            routeur.ajoutListe("!")
 
     except:
         print("ERROR configProtocol {} {}".format(protocol,str(routeur.ID)))
@@ -217,29 +205,23 @@ def appelJSON(nomFichier):
 
 if __name__ == "__main__":
 
-    R1 = Routeur([1,1],['GigabiteEthernet1/0','GigabiteEthernet2/0'],[[2,""],[3,""]])
-    R2 = Routeur([1,2],['GigabiteEthernet1/0','GigabiteEthernet2/0','GigabiteEthernet3/0'],[[1,""],[3,""],[4,""]])
-    R3 = Routeur([1,3],['GigabiteEthernet1/0','GigabiteEthernet2/0','GigabiteEthernet3/0'],[[1,""],[2,""],[5,""]])
-    R4 = Routeur([1,4],['GigabiteEthernet1/0','GigabiteEthernet2/0','GigabiteEthernet3/0','GigabiteEthernet4/0'],[[2,""],[5,""],[6,""],[7,""]])
-    R5 = Routeur([1,5],['GigabiteEthernet1/0','GigabiteEthernet2/0','GigabiteEthernet3/0','GigabiteEthernet4/0'],[[3,""],[4,""],[6,""],[7,""]])
-    R6 = Routeur([1,6],['GigabiteEthernet1/0','GigabiteEthernet2/0','GigabiteEthernet3/0'],[[4,""],[5,""]],True, [[2,8,""]])
-    R7 = Routeur([1,7],['GigabiteEthernet1/0','GigabiteEthernet2/0','GigabiteEthernet3/0'],[[4,""],[5,""]],True, [[2,9,""]])
-    R8 = Routeur([2,8],['GigabiteEthernet1/0','GigabiteEthernet2/0','GigabiteEthernet3/0'],[[10,""],[11,""]],True, [[1,6,""]])
-    R9 = Routeur([2,9],['GigabiteEthernet1/0','GigabiteEthernet2/0','GigabiteEthernet3/0'],[[10,""],[11,""]],True, [[1,7,""]])
-    R10 = Routeur([2,10],['GigabiteEthernet1/0','GigabiteEthernet2/0','GigabiteEthernet3/0','GigabiteEthernet4/0'],[[8,""],[9,""],[11,""],[12,""]])
-    R11 = Routeur([2,11],['GigabiteEthernet1/0','GigabiteEthernet2/0','GigabiteEthernet3/0','GigabiteEthernet4/0'],[[8,""],[9,""],[10,""],[13,""]])
-    R12 = Routeur([2,12],['GigabiteEthernet1/0','GigabiteEthernet2/0','GigabiteEthernet3/0'],[[10,""],[13,""],[14,""]])
-    R13 = Routeur([2,13],['GigabiteEthernet1/0','GigabiteEthernet2/0','GigabiteEthernet3/0'],[[11,""],[12,""],[14,""]])
-    R14 = Routeur([2,14],['GigabiteEthernet1/0','GigabiteEthernet2/0'],[[12,""],[13,""]])
-        
-    AS1 = AS(1,"rip",[R1,R2,R3,R4,R5,R6,R7],'2020:0:1::/48')
-    AS2 = AS(2,"ospf",[R8,R9,R10,R11,R12,R13,R14],'2020:0:2::/48')
+    # convertir un string en ligne de commande
+    for line in List_Router:
+        exec(line)
+            
 
-    #listeAs = descriptJSON("Path")
-
-    listeAs = creationListAs(AS1, AS2)
-
-   # listeAs = appelJSON ('fichier_intention_Root.json')
+    # Définition de nos AS à partir de la classe AS
+    listeAsStr =[]
+    for line in List_AS:
+        exec(line)
+        sousLine = ""
+        for k in range(len(line)):
+            if line[k] == " ":
+                break
+            else:
+                sousLine+=line[k]
+        listeAsStr.append(sousLine)
+    listeAs = [globals()[x] for x in listeAsStr]
 
     idNewNetwork = 1   
     

@@ -6,21 +6,21 @@ interface GigabiteEthernet1/0
 no shutdown
 ipv6 enable
 ipv6 address 2020:0:2:21::14/64
-exit
+!
 interface GigabiteEthernet2/0
 no shutdown
 ipv6 enable
 ipv6 address 2020:0:2:22::14/64
-exit
+!
 interface loopback 0
 no shutdown
 ipv6 enable
 ipv6 address 2::14/128
 ipv6 ospf 1 area 1
-exit
+!
 ipv6 router ospf 1
 router-id 14.14.14.14
-exit
+!
 router bgp 2
 no bgp default ipv4-unicast
 bgp router-id 14.14.14.14
@@ -43,6 +43,6 @@ neighbor 2::10 activate
 neighbor 2::11 activate
 neighbor 2::12 activate
 neighbor 2::13 activate
-exit
-exit
+!
+!
 end

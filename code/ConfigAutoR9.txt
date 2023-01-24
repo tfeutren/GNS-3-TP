@@ -8,27 +8,27 @@ no shutdown
 ipv6 enable
 ipv6 address 2020:0:2:15::9/64
 ipv6 ospf 1 area 1
-exit
+!
 interface GigabiteEthernet2/0
 no shutdown
 ipv6 enable
 ipv6 address 2020:0:2:16::9/64
 ipv6 ospf 1 area 1
-exit
+!
 interface GigabiteEthernet3/0
 no shutdown
 ipv6 enable
 ipv6 address 2023:0:12::9/64
-exit
+!
 interface loopback 0
 no shutdown
 ipv6 enable
 ipv6 address 2::9/128
 ipv6 ospf 1 area 1
-exit
+!
 ipv6 router ospf 1
 router-id 9.9.9.9
-exit
+!
 router bgp 2
 no bgp default ipv4-unicast
 bgp router-id 9.9.9.9
@@ -54,6 +54,6 @@ neighbor 2::13 activate
 neighbor 2::14 activate
 neighbor 2023:0:12::7 activate
 network 2020:0:2::/48
-exit
-exit
+!
+!
 end

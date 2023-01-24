@@ -28,14 +28,14 @@ def creerMatriceTableau():
 "Pour les Routeurs"
 def creerStringJsonRoot(Tableur):
     lignesJSON = []
-    for i in range(1, len(Tableur)-1):
-        lignesJSON.append("{} = Routeur({},{},{},{},{},{})".format(Tableur[i][0],Tableur[i][1],Tableur[i][2],Tableur[i][3],Tableur[i][4],Tableur[i][5],Tableur[i][6]))
+    for i in range(1, len(Tableur)):
+        lignesJSON.append("{} = Routeur([{},{}],{},{},{},{})".format(Tableur[i][0],Tableur[i][1],Tableur[i][2],Tableur[i][3],Tableur[i][4],Tableur[i][5],Tableur[i][6]))
     return lignesJSON
 
 "Pour les AS"
 def creerStringJsonAS(Tableur):
     lignesJSON = []
-    for i in range(1,len(Tableur)-1):
+    for i in range(1,len(Tableur)):
         if Tableur[i][8] != None:
             lignesJSON.append("{} = AS( {},{},{},{} ) ".format(Tableur[i][8],Tableur[i][9],Tableur[i][10],Tableur[i][11],Tableur[i][12]))
     return lignesJSON
@@ -45,6 +45,8 @@ def creerStringJsonAS(Tableur):
 
 Tableur = creerMatriceTableau()
 
-print(creerStringJsonAS(Tableur))
+List_AS = creerStringJsonAS(Tableur)
+List_Router = creerStringJsonRoot(Tableur)
+
 
 
