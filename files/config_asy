@@ -231,6 +231,7 @@ enable
             ipv6 ospf 1 area 1
             exit
 end
+
 R12
 
 enable

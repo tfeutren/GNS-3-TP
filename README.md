@@ -8,13 +8,14 @@ Configure AS with different Protocol
 
 ## Code 🔧:
 * Our project with sript python for **automate the configuration** to the AS 
-* from the different network parameters, we have created a python program that will write the different configuration of the routers
+    * main.py : The main program to write the different ConfigAuto file
+    * type_objet.py : Definition of our class : Routeur and AS
+    * readData : This file read Def_Root_As.xlsx, and can create the serveral instances about Rotor and As.
 
 ## Files :paperclip:
 * Look at the configuration about **ASX** and **ASY** in Cisco ISO programming handmade
-* Our project with sript python for **automate the configuration** to the AS
 * We can see our files gns3 about **network configuration**.
 
 ## Project-files :runner:
 * Some files about operations from the gns3 file
-* in *dynamips* we have the different files, these files are modified by our python program
+* in *dynamips* we have the different files about configuration of router

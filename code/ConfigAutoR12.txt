@@ -6,6 +6,7 @@ interface GigabiteEthernet1/0
 no shutdown
 ipv6 enable
 ipv6 address 2020:0:2:18::12/64
+ipv6 ospf 1 area 1
 !
 interface GigabiteEthernet2/0
 no shutdown

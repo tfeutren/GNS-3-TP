@@ -45,6 +45,9 @@ neighbor 2::13 update-source loopback 0
 neighbor 2::14 remote-as 2
 neighbor 2::14 update-source loopback 0
 neighbor 2023:0:11::6 remote-as 1
+neighbor 2023:0:11::6 send-community
+neighbor 2023:0:11::6 route-map Provider in
+neighbor 2023:0:11::6 route-map Provider out
 address-family ipv6 unicast
 neighbor 2::9 activate
 neighbor 2::10 activate
@@ -55,5 +58,18 @@ neighbor 2::14 activate
 neighbor 2023:0:11::6 activate
 network 2020:0:2::/48
 !
+!
+ip bgp-community new-format
+route-map Peer permit 101
+match ipv6 address 1
+set LOCAL_PREF 200
+!
+route-map Customer permit 102
+match ipv6 address 1
+set LOCAL_PREF 300
+!
+route-map Provider permit 100
+match ipv6 address 1
+set LOCAL_PREF 100
 !
 end

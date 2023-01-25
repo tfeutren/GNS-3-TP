@@ -6,11 +6,14 @@ interface GigabiteEthernet1/0
 no shutdown
 ipv6 enable
 ipv6 address 2020:0:2:13::10/64
+ipv6 ospf 1 area 1
+ipv6 ospf cost 500
 !
 interface GigabiteEthernet2/0
 no shutdown
 ipv6 enable
 ipv6 address 2020:0:2:15::10/64
+ipv6 ospf 1 area 1
 !
 interface GigabiteEthernet3/0
 no shutdown
@@ -23,6 +26,7 @@ no shutdown
 ipv6 enable
 ipv6 address 2020:0:2:18::10/64
 ipv6 ospf 1 area 1
+ipv6 ospf cost 10
 !
 interface loopback 0
 no shutdown

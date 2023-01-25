@@ -6,11 +6,13 @@ interface GigabiteEthernet1/0
 no shutdown
 ipv6 enable
 ipv6 address 2020:0:1:5::5/64
+ipv6 rip 1 enable
 !
 interface GigabiteEthernet2/0
 no shutdown
 ipv6 enable
 ipv6 address 2020:0:1:6::5/64
+ipv6 rip 1 enable
 !
 interface GigabiteEthernet3/0
 no shutdown

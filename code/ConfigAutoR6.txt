@@ -7,11 +7,13 @@ interface GigabiteEthernet1/0
 no shutdown
 ipv6 enable
 ipv6 address 2020:0:1:7::6/64
+ipv6 rip 1 enable
 !
 interface GigabiteEthernet2/0
 no shutdown
 ipv6 enable
 ipv6 address 2020:0:1:9::6/64
+ipv6 rip 1 enable
 !
 interface GigabiteEthernet3/0
 no shutdown
@@ -22,7 +24,7 @@ interface loopback 0
 no shutdown
 ipv6 enable
 ipv6 address 1::6/128
-ipv6 ospf 1 area 1
+ipv6 rip 1 enable
 !
 ipv6 router rip 1
 redistribute connected
@@ -43,6 +45,9 @@ neighbor 1::5 update-source loopback 0
 neighbor 1::7 remote-as 1
 neighbor 1::7 update-source loopback 0
 neighbor 2023:0:11::8 remote-as 2
+neighbor 2023:0:11::8 send-community
+neighbor 2023:0:11::8 route-map Customer in
+neighbor 2023:0:11::8 route-map Customer out
 address-family ipv6 unicast
 neighbor 1::1 activate
 neighbor 1::2 activate
@@ -53,5 +58,18 @@ neighbor 1::7 activate
 neighbor 2023:0:11::8 activate
 network 2020:0:1::/48
 !
+!
+ip bgp-community new-format
+route-map Peer permit 101
+match ipv6 address 1
+set LOCAL_PREF 200
+!
+route-map Customer permit 102
+match ipv6 address 1
+set LOCAL_PREF 300
+!
+route-map Provider permit 100
+match ipv6 address 1
+set LOCAL_PREF 100
 !
 end
