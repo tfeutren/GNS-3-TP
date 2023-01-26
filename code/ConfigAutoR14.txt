@@ -40,11 +40,17 @@ neighbor 2::13 remote-as 2
 neighbor 2::13 update-source loopback 0
 address-family ipv6 unicast
 neighbor 2::8 activate
+neighbor 2::8 send-community
 neighbor 2::9 activate
+neighbor 2::9 send-community
 neighbor 2::10 activate
+neighbor 2::10 send-community
 neighbor 2::11 activate
+neighbor 2::11 send-community
 neighbor 2::12 activate
+neighbor 2::12 send-community
 neighbor 2::13 activate
+neighbor 2::13 send-community
 !
 !
 end

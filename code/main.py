@@ -147,35 +147,35 @@ def configProtocol(routeur,protocol,As=None):
         if routeur.ASBR == True:
             for lienBGP in routeur.neighborsEbgp:
                 routeur.ajoutListe("neighbor {}{} remote-as {}".format(str(lienBGP[2])[:11],str(lienBGP[1]),str(lienBGP[0])))
-                routeur.ajoutListe("neighbor {}{} send-community".format(str(lienBGP[2])[:11],str(lienBGP[1])))
-
-                if lienBGP[3]=="peer":
-                    routeur.ajoutListe("set-community 2")
-                    routeur.ajoutListe("neighbor {}{} route-map Peer in".format(str(lienBGP[2])[:11],str(lienBGP[1])))
-                    
-
-                elif lienBGP[3]=="provider":
-                    routeur.ajoutListe("set-community 3")
-                    routeur.ajoutListe("neighbor {}{} route-map Provider in".format(str(lienBGP[2])[:11],str(lienBGP[1])))
 
 
-                elif lienBGP[3]=="customer":
-                    routeur.ajoutListe("set-community 1")
-                    routeur.ajoutListe("neighbor {}{} route-map Customer in".format(str(lienBGP[2])[:11],str(lienBGP[1])))
-
-
-                
         routeur.ajoutListe("address-family ipv6 unicast")
 
         #activation neighbors bgp pour routeurs
         for r in As.listeRouteurs:
             if r != routeur:
                 routeur.ajoutListe("neighbor {}::{} activate".format(str(As.number),str(r.ID[1])))
+                routeur.ajoutListe("neighbor {}::{} send-community".format(str(As.number),str(r.ID[1])))
 
         #complément activation neighbors bgp pour ASBR
         if routeur.ASBR == True:     
             for lienBGP in routeur.neighborsEbgp:
                 routeur.ajoutListe("neighbor {}{} activate".format(str(lienBGP[2])[:11],str(lienBGP[1])))
+                routeur.ajoutListe("neighbor {}{} send-community".format(str(lienBGP[2])[:11],str(lienBGP[1])))
+
+                if lienBGP[3]=="peer":
+                    routeur.ajoutListe("neighbor {}{} route-map Peer_in in".format(str(lienBGP[2])[:11],str(lienBGP[1])))
+                    routeur.ajoutListe("neighbor {}{} route-map Out out".format(str(lienBGP[2])[:11],str(lienBGP[1])))
+
+                elif lienBGP[3]=="provider":
+                    
+                    routeur.ajoutListe("neighbor {}{} route-map Provider_in in".format(str(lienBGP[2])[:11],str(lienBGP[1])))
+                    routeur.ajoutListe("neighbor {}{} route-map Out out".format(str(lienBGP[2])[:11],str(lienBGP[1])))
+
+
+                elif lienBGP[3]=="customer":
+                    routeur.ajoutListe("neighbor {}{} route-map Customer_in in".format(str(lienBGP[2])[:11],str(lienBGP[1])))
+                    routeur.ajoutListe("neighbor {}{} route-map Out out".format(str(lienBGP[2])[:11],str(lienBGP[1])))
 
 
             #déclaration réseaux 
@@ -187,29 +187,38 @@ def configProtocol(routeur,protocol,As=None):
         if routeur.ASBR == True:
 
             routeur.ajoutListe("ip bgp-community new-format")
+            routeur.ajoutListe("ip community-list 1 permit 1")
+            routeur.ajoutListe("ip community-list 2 permit 2")
+            routeur.ajoutListe("ip community-list 3 permit 3")
 
-            routeur.ajoutListe("route-map Peer permit 101")
-            routeur.ajoutListe("match community peer permit 2")
-            routeur.ajoutListe("set LOCAL_PREF 200")
+            routeur.ajoutListe("route-map Customer_in permit 10")
+            routeur.ajoutListe("set community 1")
+            routeur.ajoutListe("set local-preference 300")
             routeur.ajoutListe("!")
 
-            routeur.ajoutListe("route-map Customer permit 102")
-            routeur.ajoutListe("match community customer permit 1")
-            routeur.ajoutListe("set LOCAL_PREF 300")
+            routeur.ajoutListe("route-map Peer_in permit 20")
+            routeur.ajoutListe("set community 2")
+            routeur.ajoutListe("set local-preference 200")
+            routeur.ajoutListe("set metric 1000")
             routeur.ajoutListe("!")
 
-            routeur.ajoutListe("route-map Provider permit 100")
-            routeur.ajoutListe("match community provider permit 3")
-            routeur.ajoutListe("set LOCAL_PREF 100")
+            routeur.ajoutListe("route-map Provider_in permit 30")
+            routeur.ajoutListe("set community 3")
+            routeur.ajoutListe("set local-preference 100")
+            routeur.ajoutListe("set metric 1000")
             routeur.ajoutListe("!")
 
-            routeur.ajoutListe("ip community-list peer")
-            routeur.ajoutListe("ip community-list customer")
-            routeur.ajoutListe("ip community-list provider")
+            routeur.ajoutListe("route-map Out deny 20")
+            routeur.ajoutListe("match community 2")
+            routeur.ajoutListe("!")
 
+            routeur.ajoutListe("route-map Out deny 30")
+            routeur.ajoutListe("match community 3")
+            routeur.ajoutListe("!")
 
-
-    
+            routeur.ajoutListe("route-map Out permit 10")
+            routeur.ajoutListe("match community 1")
+            routeur.ajoutListe("!")    
 
 #Importer les données dans les fichiers JSON
 def appelJSON(nomFichier):

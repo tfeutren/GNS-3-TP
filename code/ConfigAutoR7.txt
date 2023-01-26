@@ -45,31 +45,49 @@ neighbor 1::5 update-source loopback 0
 neighbor 1::6 remote-as 1
 neighbor 1::6 update-source loopback 0
 neighbor 2023:0:12::9 remote-as 2
-neighbor 2023:0:12::9 send-community
-neighbor 2023:0:12::9 route-map Peer in
-neighbor 2023:0:12::9 route-map Peer out
 address-family ipv6 unicast
 neighbor 1::1 activate
+neighbor 1::1 send-community
 neighbor 1::2 activate
+neighbor 1::2 send-community
 neighbor 1::3 activate
+neighbor 1::3 send-community
 neighbor 1::4 activate
+neighbor 1::4 send-community
 neighbor 1::5 activate
+neighbor 1::5 send-community
 neighbor 1::6 activate
+neighbor 1::6 send-community
 neighbor 2023:0:12::9 activate
+neighbor 2023:0:12::9 send-community
+neighbor 2023:0:12::9 route-map Peer_in in
+neighbor 2023:0:12::9 route-map Out out
 network 2020:0:1::/48
 !
 !
 ip bgp-community new-format
-route-map Peer permit 101
-match ipv6 address 1
-set LOCAL_PREF 200
+ip community-list 1 permit 1
+ip community-list 2 permit 2
+ip community-list 3 permit 3
+route-map Customer_in permit 10
+set community 1
+set local-preference 300
 !
-route-map Customer permit 102
-match ipv6 address 1
-set LOCAL_PREF 300
+route-map Peer_in permit 20
+set community 2
+set local-preference 200
 !
-route-map Provider permit 100
-match ipv6 address 1
-set LOCAL_PREF 100
+route-map Provider_in permit 30
+set community 3
+set local-preference 100
+!
+route-map Out deny 20
+match community 2
+!
+route-map Out deny 30
+match community 3
+!
+route-map Out permit 10
+match community 1
 !
 end
